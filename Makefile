@@ -12,13 +12,13 @@ else ifeq ($(uname_s),Linux)
 	STANDARD = -std=c++17
 endif
 
-all: ./Build/Qubit.o
-	g++ ./Build/Qubit.o -o Kanad $(LINKER) -lzmq -lsfml-graphics -lsfml-window -lsfml-system
+all: Core
+	g++ ./Build/Qubit.o ./Build/Kanad.o -o Kanad $(LINKER)
 	chmod +x ./Kanad
 
-
-./Build/Qubit.o: ./Engine/Qubit.cpp
+Core: ./Engine/Qubit.cpp ./Engine/Kanad.cpp
 	g++ $(STANDARD) -c ./Engine/Qubit.cpp -o ./Build/Qubit.o $(INCLUDE)
+	g++ $(STANDARD) -c ./Engine/Kanad.cpp -o ./Build/Kanad.o $(INCLUDE)
 
 clean:
 	rm -rf ./Build/* ./Kanad
