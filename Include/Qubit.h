@@ -24,6 +24,6 @@ namespace kanad {
         double _p1(){return pow(abs(Amp1), 2);};
         static double _chance(){return ((double)(rand() % CHANCE_MAX))/CHANCE;};
         std::complex<double> Amp0{1/ sqrt(2),0};
-        std::complex<double> Amp1{1/ sqrt(2),0};
+      std::complex<double> Amp1{0, 1/ sqrt(2)};
     };
 }
